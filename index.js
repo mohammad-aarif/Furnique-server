@@ -2,7 +2,8 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const { default: mongoose } = require('mongoose');
-const productRouter = require("./Routers/productRouter")
+const productRouter = require("./Routers/productRouter");
+const categoriesRouter = require('./Routers/categoriesRouter');
 
 // configuration
 dotenv.config()
@@ -22,6 +23,7 @@ mongoose.connect(process.env.MONGOOSE_CONNECTION_URI)
 
 // Routes 
 app.use('/products', productRouter)
+app.use('/categories', categoriesRouter)
 
 
 app.listen(process.env.PORT, () => {
