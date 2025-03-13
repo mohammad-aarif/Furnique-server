@@ -8,7 +8,6 @@ const getAllProducts = async(req, res, next) => {
         let sort_option = {}
         const dataLimit = 12
         const dataSkip = parseInt(req.query.page) - 1;
-        console.log(req.query.page)
         const cat_filter = req.query.cat ? (req.query.cat).split(',') :  [];
         const data_sort = req.query.sort || 'latest'
 
