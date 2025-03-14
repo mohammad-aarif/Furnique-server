@@ -4,7 +4,7 @@ const newUser = async(req, res, next) => {
     try {
         const userExist = await User.findOne({email: req.body.email})
         if(userExist){
-            return res.status(400).json({message: "User Already Exist"})
+            return res.status(200).json({message: "User Already Exist"})
         }
         const user = await User.create(req.body)
         res.status(201).json({ message: 'User Added Successfully!'})

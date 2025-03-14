@@ -7,6 +7,7 @@ const getAllProducts = async(req, res, next) => {
         let filter = {}
         let sort_option = {}
         const dataLimit = 12
+        
         const dataSkip = parseInt(req.query.page) - 1;
         const cat_filter = req.query.cat ? (req.query.cat).split(',') :  [];
         const data_sort = req.query.sort || 'latest'
@@ -16,7 +17,6 @@ const getAllProducts = async(req, res, next) => {
         }
         if(data_sort === 'h2l'){sort_option.price = -1}
         if(data_sort === 'l2h'){sort_option.price = 1}
-        console.log(req.query); 
         const allProduct = await Product.find(filter).skip(dataSkip*dataLimit).limit(dataLimit).sort(sort_option)
         const count = await Product.find(filter).sort(sort_option)
         res.send({products: allProduct, count: count.length})
