@@ -1,5 +1,5 @@
 const express = require('express');
-const { getAllProducts, getFeaturedProducts, getTotalProducts, getNewArriavalProducts } = require('../Controller/Products/getProduct');
+const { getAllProducts, getFeaturedProducts, getTotalProducts, getNewArriavalProducts, getSingleProduct } = require('../Controller/Products/getProduct');
 
 const router = express.Router()
 
@@ -11,5 +11,7 @@ router.get('/count', getTotalProducts)
 router.get('/new-arrival', getNewArriavalProducts)
 // Getting Featured Products
 router.get('/featured', getFeaturedProducts)
+// Getting Single Product
+router.get('/item/:productId', getSingleProduct)
 
 module.exports = router

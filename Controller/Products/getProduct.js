@@ -54,10 +54,22 @@ const getFeaturedProducts = async(req, res, next) => {
         res.status(503).json({message: 'Bad Request'})
     }
 }
+// Getting Featured Products 
+const getSingleProduct = async(req, res, next) => {
+    try {
+        const Id = (req.params.productId) 
+        const result = await Product.find({_id: Id})
+        res.send(result)
+        
+    } catch (error) {
+        res.status(503).json({message: 'Bad Request'})
+    }
+}
 
 module.exports = {
     getAllProducts,
     getNewArriavalProducts,
     getTotalProducts,
-    getFeaturedProducts
+    getFeaturedProducts,
+    getSingleProduct
 }
